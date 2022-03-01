@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style/style.css"/>
+  <script src="https://kit.fontawesome.com/39de285129.js" crossorigin="anonymous"></script>
+  <title>Responsive Navbar</title>
+</head>
+<body>
+  
+    <header class="header" id="header">
+      <a href="#header" class="logo"><i class="fas fa-mask"></i>Arpit </a>
+     
+      
+      <nav class="navbar">
+        <a href="#header">home</a>
+        <a href="#services">store</a>
+        <a href="#about">about us</a>
+        <a href="#contact">contact</a>
+      </nav>
+      
+      <div id="menu-btn" class="fa-solid fa-bars fa-2x">
+      </div>
+    </header>
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-heading">
+      Motivated web solutions.
+      </h1>
+      <p>Best websites for developing companies.
+      </p>
+    </div>
+  </section>
+  
+  <section class="services" id="services">
+    <h1>our services</h1>
+    <div class="services-box">
+      <div class="box">
+        <i class="fas fa-code fa-2x"></i>
+        <div class="box-content">
+          <h3>Web Development</h3>
+          <p>Our Employees are specilized in web development technology.Web development is the work involved in developing a website. 
+          </p>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-pencil fa-2x"></i>
+        <div class="box-content">
+          <h3>Web Design</h3>
+          <p>Web design encompasses many different skills and disciplines in the production and maintenance of  areas of web design.
+          </p>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-shopping-cart fa-2x"></i>
+        <div class="box-content">
+          <h3>E-commerce Web Design</h3>
+          <p>Web design encompasses many different skills and disciplines in the production and maintenance of websites.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+
+
+
+  <!--Slider-->
+<div id="slider">  
+  <div class="slide" style="background:dodgerBlue;">
+    <img src="images/image1.jpg" >
+  </div>
+  
+  <div class="slide" style="background:coral;">
+    <img src="images/image2.jpg" >
+
+  </div>
+ 
+  <div class="slide" style="background:crimson;">
+    <img src="images/image3.jpg" >
+
+  </div>
+  
+  
+  
+  <!--Controlling arrows-->
+  <span class="controls" onclick="prevSlide(-1)" id="left-arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+</span>
+  <span class="controls" id="right-arrow" onclick="nextSlide(1)"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+</span>
+</div>
+  <div id="dots-con">
+ <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+ </div>
+
+  
+  <section class="about" id="about">
+      <div class="about-content">
+        <div class="about-text">
+          <h1>
+            about us
+          </h1>
+          <p>VAYUZ was founded with a clear mission to build global and scalable technology products, by bringing world class engineers and designers together as a solid team that shares a deep passion for technology. Our Advisory and Leadership Team comprises of Industry Experts, CXOs with prior experience in verticals like BFSI, Healthcare, IT/ITES, Retail, Consulting etc. Our Cofounders have prior experience of building a funded EdTech Startup, doing an Indian Listing and handling large scale portfolio of Fortune Companies.</p>
+
+          <a href="#" class="btn">join us</a>
+        </div>
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+        </div>
+      </div>
+  </section>
+  
+  <section class="contact">
+    <div class="contact-left">
+      <h1>get in touch</h1>
+      <form action="">
+        <input type="text" id="name" name="name" placeholder="name">
+        <input type="email" id="email" name="email" placeholder="Email">
+        <input type="text" id="subject" name="subject" placeholder="Subject">
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+      </form>
+      <a href="#"><button>Send Message</button></a>
+    </div>
+    <div class="contact-right">
+      <h1>contact us</h1>
+      <div class="contact-right-detail">
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i>Address</li>
+          <li><i class="fas fa-phone-alt"></i>Phone: +1231231231</li>
+          <li><i class="fas fa-paper-plane"></i>Email:codehcode@gmail.com</li>
+          
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+ <script>
+     const menu = document.querySelector('#menu-btn');
+const navbar = document.querySelector('.header .navbar');
+
+menu.onclick = () => {
+  menu.classList.toggle('fa-times');
+  navbar.classList.toggle('active');
+}
+
+var slides = document.querySelectorAll(".slide");
+var dots = document.querySelectorAll(".dot");
+var index = 0;
+
+
+function prevSlide(n){
+  index+=n;
+  console.log("prevSlide is called");
+  changeSlide();
+}
+
+function nextSlide(n){
+  index+=n;
+  changeSlide();
+}
+
+changeSlide();
+
+function changeSlide(){
+    
+  if(index>slides.length-1)
+    index=0;
+  
+  if(index<0)
+    index=slides.length-1;
+  
+  
+  
+    for(let i=0;i<slides.length;i++){
+      slides[i].style.display = "none";
+      
+      dots[i].classList.remove("active");
+      
+      
+    }
+    
+    slides[index].style.display = "block";
+    dots[index].classList.add("active");
+
+  
+
+}
+
+
+
+
+
+
+
+ </script>   
+  
+ 
+</body>
+</html>
